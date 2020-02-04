@@ -17,4 +17,14 @@ target_include_directories(${PROJECT_NAME}
           INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
           )
 
-# TODO: Add tests and install targets if needed.
+# Tests and install targets.
+install(TARGETS Algorithms DESTINATION lib)
+install(FILES
+    "Conversion.h"
+#    "Encoding.h"
+    "Encryption.h"
+    "Searching.h"
+    "Sorting.h"
+    "Utility.h"
+    "Validation.h"
+    DESTINATION include)

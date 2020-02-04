@@ -23,3 +23,9 @@ target_link_libraries(${PROJECT_NAME} PUBLIC ${EXTRA_LIBS})
 target_include_directories(${PROJECT_NAME} PUBLIC
                            "${PROJECT_BINARY_DIR}"
                            )
+
+# Tests and install targets.
+install(TARGETS LCU DESTINATION bin)
+install(FILES "${PROJECT_BINARY_DIR}/Config.h"
+  DESTINATION include
+  )
