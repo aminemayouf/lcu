@@ -7,6 +7,8 @@
 #include "Algorithms/Utility.h"
 #include "Algorithms/Validation.h"
 
+#include "System/Display.h"
+
 #include <iostream>
 #include <chrono>
 
@@ -16,6 +18,7 @@ int main(int argc, int argv[]) {
 
 	std::cout << "LCU version " << LCU_VERSION_MAJOR << "." << LCU_VERSION_MINOR << std::endl << std::endl;
 
+#ifdef USE_ALGORITHMS
 	char* str = "Hello world!";
 	char c = str[4];
 
@@ -53,5 +56,13 @@ int main(int argc, int argv[]) {
 	std::cout << "IsLowerCase(" << c << ") = " << LCU::Algorithms::Validation::IsLowerCase(c) << std::endl;
 
 	delete[] ints;
+
+#endif // USE_ALGORITHMS
+
+#ifdef USE_SYSTEM
+	LCU::System::Display::Resolution desktopResolution = LCU::System::Display::DesktopResolution();
+	std::cout << "Display resolution is " << desktopResolution.horizontal << "x" << desktopResolution.vertical << std::endl;
+#endif // USE_SYSTEM
+
 	return 0;
 }

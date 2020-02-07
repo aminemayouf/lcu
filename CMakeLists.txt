@@ -1,8 +1,9 @@
 ﻿cmake_minimum_required (VERSION 3.8)
 
-project ("LCU" VERSION 0.1)
+project ("LCU" VERSION 0.2)
 
-option(USE_ALGORITHMS "Use provided algorithms" ON)
+option(USE_ALGORITHMS "Use algorithms sub-module" ON)
+option(USE_SYSTEM "Use system sub-module" ON)
 
 configure_file(Config.h.in Config.h)
 
@@ -10,6 +11,10 @@ configure_file(Config.h.in Config.h)
 if(USE_ALGORITHMS)
     add_subdirectory ("Algorithms")
     list(APPEND EXTRA_LIBS Algorithms)
+endif()
+if(USE_SYSTEM)
+    add_subdirectory ("System")
+    list(APPEND EXTRA_LIBS System)
 endif()
 
 # Add source to project's executable.
@@ -25,7 +30,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
                            )
 
 # Tests and install targets.
-install(TARGETS LCU DESTINATION bin)
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 install(FILES "${PROJECT_BINARY_DIR}/Config.h"
   DESTINATION include
   )
