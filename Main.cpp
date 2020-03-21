@@ -7,12 +7,22 @@
 #include "Algorithms/Utility.h"
 #include "Algorithms/Validation.h"
 
+#include "Events/Event.h"
+
 #include "System/Display.h"
 
 #include <iostream>
 #include <chrono>
 
 #define N 100
+
+void Hello() {
+	std::cout << "Hello";
+}
+
+void World() {
+	std::cout << "World!" << std::endl;
+}
 
 int main(int argc, int argv[]) {
 
@@ -58,6 +68,14 @@ int main(int argc, int argv[]) {
 	delete[] ints;
 
 #endif // USE_ALGORITHMS
+
+#ifdef USE_EVENTS
+	LCU::Event<void> randomEvent;
+	randomEvent += LCU::EventHandler::Bind(Hello);
+	randomEvent += LCU::EventHandler::Bind(World);
+	randomEvent -= LCU::EventHandler::Bind(Hello);
+	randomEvent();
+#endif // USE_EVENTS
 
 #ifdef USE_SYSTEM
 	LCU::System::Display::Resolution desktopResolution = LCU::System::Display::DesktopResolution();

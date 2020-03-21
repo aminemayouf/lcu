@@ -12,7 +12,7 @@
       "ctestCommandArgs": "",
       "variables": [
         {
-          "name": "USE_SYSTEM",
+          "name": "USE_MYSYSTEM",
           "value": "True",
           "type": "BOOL"
         }

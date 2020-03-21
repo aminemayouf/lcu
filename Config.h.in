@@ -2,4 +2,5 @@
 #define LCU_VERSION_MINOR @LCU_VERSION_MINOR@
 
 #cmakedefine USE_ALGORITHMS
+#cmakedefine USE_EVENTS
 #cmakedefine USE_SYSTEM

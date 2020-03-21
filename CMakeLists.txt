@@ -3,6 +3,7 @@
 project ("LCU" VERSION 0.2)
 
 option(USE_ALGORITHMS "Use algorithms sub-module" ON)
+option(USE_EVENTS "Use event sub-module" ON)
 option(USE_SYSTEM "Use system sub-module" ON)
 
 configure_file(Config.h.in Config.h)
@@ -11,6 +12,10 @@ configure_file(Config.h.in Config.h)
 if(USE_ALGORITHMS)
     add_subdirectory ("Algorithms")
     list(APPEND EXTRA_LIBS Algorithms)
+endif()
+if(USE_EVENTS)
+    add_subdirectory ("Events")
+    list(APPEND EXTRA_LIBS Events)
 endif()
 if(USE_SYSTEM)
     add_subdirectory ("System")
