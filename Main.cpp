@@ -9,6 +9,8 @@
 
 #include "Events/Event.h"
 
+#include "Interfaces/Interfaces.h"
+
 #include "System/Display.h"
 
 #include <iostream>
@@ -76,6 +78,10 @@ int main(int argc, int argv[]) {
 	randomEvent -= LCU::EventHandler::Bind(Hello);
 	randomEvent();
 #endif // USE_EVENTS
+
+#ifdef USE_INTERFACES
+
+#endif // USE_INTERFACES
 
 #ifdef USE_SYSTEM
 	LCU::System::Display::Resolution desktopResolution = LCU::System::Display::DesktopResolution();

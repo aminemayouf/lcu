@@ -3,4 +3,5 @@
 
 #cmakedefine USE_ALGORITHMS
 #cmakedefine USE_EVENTS
+#cmakedefine USE_INTERFACES
 #cmakedefine USE_SYSTEM
