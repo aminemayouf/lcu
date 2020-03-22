@@ -2,6 +2,7 @@
 #define LCU_VERSION_MINOR @LCU_VERSION_MINOR@
 
 #cmakedefine USE_ALGORITHMS
+#cmakedefine USE_DATASTRUCTURES
 #cmakedefine USE_EVENTS
 #cmakedefine USE_INTERFACES
 #cmakedefine USE_SYSTEM
