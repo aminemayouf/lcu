@@ -1,11 +1,6 @@
 ﻿#include "Config.h"
 
-#include "Algorithms/Conversion.h"
-#include "Algorithms/Encryption.h"
-#include "Algorithms/Searching.h"
-#include "Algorithms/Sorting.h"
-#include "Algorithms/Utility.h"
-#include "Algorithms/Validation.h"
+#include "Algorithms/Algorithms.h"
 
 #include "Events/Event.h"
 
@@ -63,11 +58,14 @@ int main(int argc, int argv[]) {
 	}
 	std::cout << " | " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "µs" << std::endl;
 
-	std::cout << "RandomInt() = " << LCU::Algorithms::Utility::RandomInt() << std::endl;
+	int rint = LCU::Algorithms::Utility::RandomInt()%10;
+	std::cout << "RandomInt() = " << rint << std::endl;
 
 	std::cout << "IsLowerCase(" << c << ") = " << LCU::Algorithms::Validation::IsLowerCase(c) << std::endl;
 
 	delete[] ints;
+
+	std::cout << "Sqrt(" << rint << ") = " << LCU::Algorithms::MathFunctions::Sqrt(rint) << std::endl;
 
 #endif // USE_ALGORITHMS
 

@@ -4,10 +4,10 @@ project ("Algorithms" VERSION 0.1)
 
 # Add source to project's executable.
 add_library(${PROJECT_NAME}
-    "Algorithms.cpp"
     "Conversion.cpp"
 #    "Encoding.cpp"
     "Encryption.cpp"
+    "MathFunctions.cpp"
     "Searching.cpp"
     "Sorting.cpp"
     "Utility.cpp"
@@ -23,6 +23,7 @@ install(FILES
     "Conversion.h"
 #    "Encoding.h"
     "Encryption.h"
+    "MathFunctions.h"
     "Searching.h"
     "Sorting.h"
     "Utility.h"
