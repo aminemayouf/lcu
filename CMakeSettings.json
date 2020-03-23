@@ -10,13 +10,7 @@
       "cmakeCommandArgs": "",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": "",
-      "variables": [
-        {
-          "name": "USE_MYSYSTEM",
-          "value": "True",
-          "type": "BOOL"
-        }
-      ]
+      "variables": []
     }
   ]
 }
