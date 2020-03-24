@@ -3,7 +3,7 @@
 project ("LCU" VERSION 0.2)
 
 option(USE_ALGORITHMS "Use algorithms sub-module" ON)
-option(USE_DATASTRUCTURES "Use data structures sub-module" OFF)
+option(USE_DATASTRUCTURES "Use data structures sub-module" ON)
 option(USE_EVENTS "Use events sub-module" ON)
 option(USE_INTERFACES "Use interfaces sub-module" ON)
 option(USE_SYSTEM "Use system sub-module" ON)

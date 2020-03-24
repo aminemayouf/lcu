@@ -168,6 +168,22 @@ namespace LCU
 			 * else : O(n).
 			 */
 			bool operator ==(const Array& p_array) const override;
+			Array operator +(const Type& p_value) const;
+			Array operator +(const Array& p_array) const;
+			Array operator -(const Type& p_value) const;
+			Array operator -(const Array& p_array) const;
+			Array operator *(const Type& p_value) const;
+			Array operator *(const Array& p_array) const;
+			Array operator /(const Type& p_value) const;
+			Array operator /(const Array& p_array) const;
+			Array& operator +=(const Type& p_value);
+			Array& operator +=(const Array& p_array);
+			Array& operator -=(const Type& p_value);
+			Array& operator -=(const Array& p_array);
+			Array& operator *=(const Type& p_value);
+			Array& operator *=(const Array& p_array);
+			Array& operator /=(const Type& p_value);
+			Array& operator /=(const Array& p_array);
 		};
 
 		template <typename Type>
@@ -698,6 +714,186 @@ namespace LCU
 				}
 			}
 			return true;
+		}
+
+		template <typename Type>
+		Array<Type> Array<Type>::operator +(const Type& p_value) const
+		{
+			Array result(*this);
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				result.m_pDataT[i] += p_value;
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Array<Type> Array<Type>::operator +(const Array& p_array) const
+		{
+			Array result(*this);
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				result.m_pDataT[i] += p_array.m_pDataT[i];
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Array<Type> Array<Type>::operator -(const Type& p_value) const
+		{
+			Array result(m_size);
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				result.m_pDataT[i] = m_pDataT[i] - p_value;
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Array<Type> Array<Type>::operator -(const Array& p_array) const
+		{
+			Array result(m_size);
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				result.m_pDataT[i] = m_pDataT[i] - p_array.m_pDataT[i];
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Array<Type> Array<Type>::operator *(const Type& p_value) const
+		{
+			Array result(m_size);
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				result.m_pDataT[i] = m_pDataT[i] * p_value;
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Array<Type> Array<Type>::operator *(const Array& p_array) const
+		{
+			Array result(m_size);
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				result.m_pDataT[i] = m_pDataT[i] * p_array.m_pDataT[i];
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Array<Type> Array<Type>::operator /(const Type& p_value) const
+		{
+			Array result(m_size);
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				result.m_pDataT[i] = m_pDataT[i] / p_value;
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Array<Type> Array<Type>::operator /(const Array& p_array) const
+		{
+			Array result(m_size);
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				result.m_pDataT[i] = m_pDataT[i] / p_array.m_pDataT[i];
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Array<Type>& Array<Type>::operator +=(const Type& p_value)
+		{
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				m_pDataT[i] += p_value;
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Array<Type>& Array<Type>::operator +=(const Array& p_array)
+		{
+			if (m_size == p_array.m_size)
+			{
+				for (size_t i = 0; i < m_size; ++i)
+				{
+					m_pDataT[i] += p_array.m_pDataT[i];
+				}
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Array<Type>& Array<Type>::operator -=(const Type& p_value)
+		{
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				m_pDataT[i] -= p_value;
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Array<Type>& Array<Type>::operator -=(const Array& p_array)
+		{
+			if (m_size == p_array.m_size)
+			{
+				for (size_t i = 0; i < m_size; ++i)
+				{
+					m_pDataT[i] -= p_array.m_pDataT[i];
+				}
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Array<Type>& Array<Type>::operator *=(const Type& p_value)
+		{
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				m_pDataT[i] *= p_value;
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Array<Type>& Array<Type>::operator *=(const Array& p_array)
+		{
+			if (m_size == p_array.m_size)
+			{
+				for (size_t i = 0; i < m_size; ++i)
+				{
+					m_pDataT[i] *= p_array.m_pDataT[i];
+				}
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Array<Type>& Array<Type>::operator /=(const Type& p_value)
+		{
+			for (size_t i = 0; i < m_size; ++i)
+			{
+				m_pDataT[i] /= p_value;
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Array<Type>& Array<Type>::operator /=(const Array& p_array)
+		{
+			if (m_size == p_array.m_size)
+			{
+				for (size_t i = 0; i < m_size; ++i)
+				{
+					m_pDataT[i] /= p_array.m_pDataT[i];
+				}
+			}
+			return *this;
 		}
 	}
 }
