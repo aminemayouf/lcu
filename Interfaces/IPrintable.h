@@ -2,16 +2,18 @@
 
 #include <ostream>
 
-namespace LCU {
-	inline namespace Interfaces {
+namespace LCU
+{
+	inline namespace Interfaces
+	{
 		/**
 		 * IPrintable Interface
 		 *
 		 * @project Interfaces
 		 * @author Amine MAYOUF
 		 */
-		class IPrintable {
-			
+		class IPrintable
+		{
 		public:
 			IPrintable() = default;
 			virtual ~IPrintable() = default;
@@ -21,7 +23,8 @@ namespace LCU {
 			friend std::ostream& operator <<(std::ostream& p_out, const IPrintable& p_printableObject);
 		};
 
-		inline std::ostream& operator <<(std::ostream& p_out, const IPrintable& p_printableObject) {
+		inline std::ostream& operator <<(std::ostream& p_out, const IPrintable& p_printableObject)
+		{
 			return p_out << p_printableObject.ToPrimitiveString();
 		}
 	}

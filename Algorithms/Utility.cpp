@@ -1,10 +1,11 @@
 #include "Utility.h"
 
-namespace LCU {
-	inline namespace Algorithms {
-
-		size_t Utility::AdaptedCapacity(size_t p_size) {
-
+namespace LCU
+{
+	inline namespace Algorithms
+	{
+		size_t Utility::AdaptedCapacity(size_t p_size)
+		{
 			if (p_size <= 1)
 				return p_size;
 
@@ -16,24 +17,22 @@ namespace LCU {
 			return capacity;
 		}
 
-		char* Utility::CopyOf(const char* const p_pPrimitiveCharT) {
+		char* Utility::CopyOf(const char* const p_pPrimitiveCharT)
+		{
 			return CopyOf(p_pPrimitiveCharT, LengthOf(p_pPrimitiveCharT));
 		}
 
-		char* Utility::CopyOf(const char* const p_pPrimitiveCharT, size_t p_size) {
-
+		char* Utility::CopyOf(const char* const p_pPrimitiveCharT, size_t p_size)
+		{
 			char* result = new char[p_size + 1];
-
 			for (size_t i = 0; i < p_size; ++i)
 				result[i] = p_pPrimitiveCharT[i];
-
 			result[p_size] = '\0';
-
 			return result;
 		}
 
-		size_t Utility::LengthOf(const char* const p_pPrimitiveCharT) {
-
+		size_t Utility::LengthOf(const char* const p_pPrimitiveCharT)
+		{
 			if (p_pPrimitiveCharT == nullptr)
 				return 0;
 
@@ -44,13 +43,13 @@ namespace LCU {
 
 			return i;
 		}
-		
-		int Utility::RandomInt(int p_min, int p_max) {
 
+		int Utility::RandomInt(int p_min, int p_max)
+		{
 			std::random_device device;
 			std::mt19937 range(device());
-			std::uniform_int_distribution<std::mt19937::result_type> distribution(p_min, p_max); // distribution in range [min, max]
-
+			std::uniform_int_distribution<std::mt19937::result_type> distribution(p_min, p_max);
+			// distribution in range [min, max]
 			return distribution(range);
 		}
 	}

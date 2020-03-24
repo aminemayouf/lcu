@@ -18,7 +18,7 @@ namespace LCU
 		{
 		protected:
 			using AContainer<Subset<Type>>::m_size; // The number of vertices
-		
+
 		public:
 			Subset<Type>* subsets;
 

@@ -244,7 +244,7 @@ namespace LCU
 				++i;
 				pCurrent = pCurrent->Previous();
 			}
-			
+
 			return *pResult;
 		}
 

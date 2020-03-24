@@ -9,8 +9,10 @@
 #include <set>
 #endif
 
-namespace LCU {
-	inline namespace Events {
+namespace LCU
+{
+	inline namespace Events
+	{
 		/**
 		 * Event Class
 		 *
@@ -24,19 +26,14 @@ namespace LCU {
 		 * @note Handlers will be notified when operator() is called.
 		 */
 		template <typename... Types> // Variadic template
-		class Event {
-			/*
-			 *	Attributes
-			 */
+		class Event
+		{
 		protected:
 #ifdef USE_DATASTRUSTURES
 			Set<AEventHandler<Types...>*> m_handlers;
 #else
 			std::set<AEventHandler<Types...>*> m_handlers;
 #endif
-			/*
-			 *	Methods
-			 */
 		public:
 			Event() = default;
 			Event(const Event&) = delete; // Disable copying.
@@ -44,30 +41,35 @@ namespace LCU {
 
 			Event& operator +=(AEventHandler<Types...>* p_eventHandler);
 			Event& operator -=(AEventHandler<Types...>* p_eventHandler);
-
 			void operator ()(const Types&... p_values);
-
 			Event& operator=(const Event&) = delete; // Same here.
 		};
 
 		template <typename ... Types>
-		Event<Types...>::~Event() {
+		Event<Types...>::~Event()
+		{
 			// m_handlers.Purge();
 		}
 
 		template <typename ... Types>
-		Event<Types...>& Event<Types...>::operator+=(AEventHandler<Types...>* p_eventHandler) {
-			if (p_eventHandler) {
+		Event<Types...>& Event<Types...>::operator+=(AEventHandler<Types...>* p_eventHandler)
+		{
+			if (p_eventHandler)
+			{
 				m_handlers.Insert(p_eventHandler);
 			}
 			return *this;
 		}
 
 		template <typename ... Types>
-		Event<Types...>& Event<Types...>::operator-=(AEventHandler<Types...>* p_eventHandler) {
-			if (p_eventHandler) {
-				for (auto it = m_handlers.Begin(); it != m_handlers.End(); ++it) {
-					if ((*it)->IsBindedToSameFunctionAs(p_eventHandler)) {
+		Event<Types...>& Event<Types...>::operator-=(AEventHandler<Types...>* p_eventHandler)
+		{
+			if (p_eventHandler)
+			{
+				for (auto it = m_handlers.Begin(); it != m_handlers.End(); ++it)
+				{
+					if ((*it)->IsBindedToSameFunctionAs(p_eventHandler))
+					{
 						m_handlers.Remove(it);
 						break;
 					}
@@ -77,31 +79,29 @@ namespace LCU {
 		}
 
 		template <typename ... Types>
-		void Event<Types...>::operator()(const Types&... p_values) {
-			for (auto it = m_handlers.begin(); it != m_handlers.end(); ++it) {
-				if (*it) {
+		void Event<Types...>::operator()(const Types&... p_values)
+		{
+			for (auto it = m_handlers.begin(); it != m_handlers.end(); ++it)
+			{
+				if (*it)
+				{
 					(*it)->OnEventTriggered(p_values...);
 				}
 			}
 		}
 
 		/**
-		* A specialization of the Event Class for when void is passed.
-		*/
+		 * A specialization of the Event Class for when void is passed.
+		 */
 		template <>
-		class Event<void> {
-			/*
-			 *	Attributes
-			 */
+		class Event<void>
+		{
 		protected:
 #ifdef USE_DATASTRUSTURES
 			Set<AEventHandler<void>*> m_handlers;
 #else
 			std::set<AEventHandler<void>*> m_handlers;
 #endif
-			/*
-			 *	Methods
-			 */
 		public:
 			Event() = default;
 			Event(const Event&) = delete;
@@ -109,18 +109,19 @@ namespace LCU {
 
 			Event& operator +=(AEventHandler<void>* p_eventHandler);
 			Event& operator -=(AEventHandler<void>* p_eventHandler);
-
 			void operator ()() const;
-
 			Event& operator=(const Event&) = delete;
 		};
 
-		inline Event<void>::~Event() {
+		inline Event<void>::~Event()
+		{
 			// m_handlers.Purge();
 		}
 
-		inline Event<void>& Event<void>::operator+=(AEventHandler<void>* p_eventHandler) {
-			if (p_eventHandler) {
+		inline Event<void>& Event<void>::operator+=(AEventHandler<void>* p_eventHandler)
+		{
+			if (p_eventHandler)
+			{
 #ifdef USE_DATASTRUSTURES
 				m_handlers.Insert(p_eventHandler);
 #else
@@ -130,14 +131,18 @@ namespace LCU {
 			return *this;
 		}
 
-		inline Event<void>& Event<void>::operator-=(AEventHandler<void>* p_eventHandler) {
-			if (p_eventHandler) {
+		inline Event<void>& Event<void>::operator-=(AEventHandler<void>* p_eventHandler)
+		{
+			if (p_eventHandler)
+			{
 #ifdef USE_DATASTRUSTURES
 				for (auto it = m_handlers.Begin(); it != m_handlers.End(); ++it) {
 #else
-				for (auto it = m_handlers.begin(); it != m_handlers.end(); ++it) {
+				for (auto it = m_handlers.begin(); it != m_handlers.end(); ++it)
+				{
 #endif // USE_DATASTRUSTURES
-					if ((*it)->IsBindedToSameFunctionAs(p_eventHandler)) {
+					if ((*it)->IsBindedToSameFunctionAs(p_eventHandler))
+					{
 #ifdef USE_DATASTRUSTURES
 						m_handlers.Remove(*it);
 #else
@@ -150,11 +155,13 @@ namespace LCU {
 			return *this;
 		}
 
-		inline void Event<void>::operator()() const {
+		inline void Event<void>::operator()() const
+		{
 #ifdef USE_DATASTRUSTURES
 			for (auto it = m_handlers.Begin(); it != m_handlers.End(); ++it) {
 #else
-			for (auto it = m_handlers.begin(); it != m_handlers.end(); ++it) {
+			for (auto it = m_handlers.begin(); it != m_handlers.end(); ++it)
+			{
 #endif // USE_DATASTRUSTURES
 				(*it)->OnEventTriggered();
 			}

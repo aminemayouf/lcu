@@ -12,23 +12,25 @@
 #endif
 
 
-namespace LCU {
-	inline namespace System {
+namespace LCU
+{
+	inline namespace System
+	{
 		/**
 		 * Display Class
 		 *
 		 * @project System
 		 * @author Amine MAYOUF
 		*/
-		class Display {
+		class Display
+		{
 		public:
-			struct Resolution {
+			struct Resolution
+			{
 				size_t horizontal;
 				size_t vertical;
 			};
-			/*
-			 *	Methods
-			 */
+
 			Display() = delete;
 			~Display() = delete;
 

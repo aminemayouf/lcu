@@ -1,6 +1,8 @@
 #include "AEventHandler.h"
 
-namespace LCU {
-	inline namespace Events {
+namespace LCU
+{
+	inline namespace Events
+	{
 	}
 }

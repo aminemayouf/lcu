@@ -3,6 +3,8 @@
 #include "AContainer.h"
 #include "SinglyLinkedListNode.h"
 
+#include "../Interfaces/IForwardIterator.h"
+
 namespace LCU
 {
 	inline namespace DataStructures

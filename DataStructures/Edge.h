@@ -37,7 +37,7 @@ namespace LCU
 		};
 
 		template <typename Type>
-		Edge<Type>::Edge<Type>() : src(0), source(nullptr), dest(0), destination(nullptr), weight(0)
+		Edge<Type>::Edge() : src(0), source(nullptr), dest(0), destination(nullptr), weight(0)
 		{
 		}
 
@@ -50,14 +50,14 @@ namespace LCU
 		}
 
 		template <typename Type>
-		Edge<Type>::Edge<Type>(const size_t& p_firstVertexId, const size_t& p_secondVertexId, int p_weight)
+		Edge<Type>::Edge(const size_t& p_firstVertexId, const size_t& p_secondVertexId, int p_weight)
 			: src(p_firstVertexId), source(new Vertex<Type>(p_firstVertexId)), dest(p_secondVertexId),
 			  destination(new Vertex<Type>(p_secondVertexId)), weight(p_weight)
 		{
 		}
 
 		template <typename Type>
-		Edge<Type>::Edge<Type>(Vertex<Type>* p_pFirstVertex, Vertex<Type>* p_pSecondVertex, int p_weight)
+		Edge<Type>::Edge(Vertex<Type>* p_pFirstVertex, Vertex<Type>* p_pSecondVertex, int p_weight)
 			: weight(p_weight)
 		{
 			source = p_pFirstVertex;
@@ -65,7 +65,7 @@ namespace LCU
 		}
 
 		template <typename Type>
-		Edge<Type>::~Edge<Type>()
+		Edge<Type>::~Edge()
 		{
 		}
 

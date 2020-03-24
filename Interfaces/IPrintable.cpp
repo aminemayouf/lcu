@@ -1,6 +1,8 @@
 #include "IPrintable.h"
 
-namespace LCU {
-	inline namespace Interfaces {
+namespace LCU
+{
+	inline namespace Interfaces
+	{
 	}
 }

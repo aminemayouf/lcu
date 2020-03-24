@@ -1,6 +1,8 @@
 #include "IObserver.h"
 
-namespace LCU {
-	inline namespace {
+namespace LCU
+{
+	inline namespace
+	{
 	}
 }

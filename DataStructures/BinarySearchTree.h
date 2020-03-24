@@ -442,7 +442,7 @@ namespace LCU
 					{
 						pTemp = pCurrent;
 					}
-					// Case 2: one child
+						// Case 2: one child
 					else if (pCurrent->HasOneChild())
 					{
 						pTemp = pCurrent;

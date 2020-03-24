@@ -3,6 +3,8 @@
 #include "AContainer.h"
 #include "DoublyLinkedListNode.h"
 
+#include "../Interfaces/IIterator.h"
+
 namespace LCU
 {
 	inline namespace DataStructures

@@ -1,19 +1,23 @@
 #pragma once
 
 
-namespace LCU {
-	inline namespace DataStructures {
+namespace LCU
+{
+	inline namespace DataStructures
+	{
 		class Object;
 	}
-	inline namespace Interfaces {
+
+	inline namespace Interfaces
+	{
 		/**
 		 * IClonable Interface
 		 *
 		 * @project Interfaces
 		 * @author Amine MAYOUF
 		 */
-		class IClonable {
-
+		class IClonable
+		{
 		public:
 			IClonable() = default;
 			virtual ~IClonable() = default;

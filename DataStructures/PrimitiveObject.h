@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../Algorithms/Utility.h"
 #include "../Interfaces/IPrintable.h"
 
 namespace LCU
@@ -24,5 +25,20 @@ namespace LCU
 			//T
 			const char* ToPrimitiveString() const override;
 		};
+
+		size_t PrimitiveObject::HashCode() const
+		{
+			return Utility::HashCodeOf(*this);
+		}
+
+		const char* PrimitiveObject::Name() const
+		{
+			return Utility::NameOf(*this);
+		}
+
+		const char* PrimitiveObject::ToPrimitiveString() const
+		{
+			return Utility::NameOf(*this);
+		}
 	}
 }

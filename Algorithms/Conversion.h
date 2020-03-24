@@ -1,12 +1,12 @@
 #pragma once
 
 
-namespace LCU {
-	inline namespace Algorithms {
-		class Conversion {
-			/*
-			 * Methods
-			 */
+namespace LCU
+{
+	inline namespace Algorithms
+	{
+		class Conversion
+		{
 		public:
 			Conversion() = delete;
 			~Conversion() = delete;

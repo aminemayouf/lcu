@@ -1,12 +1,13 @@
 #include "Display.h"
 
 
-namespace LCU {
-	inline namespace System {
-
+namespace LCU
+{
+	inline namespace System
+	{
 		// @return the horizontal and vertical screen sizes in pixels
-		Display::Resolution Display::DesktopResolution() {
-
+		Display::Resolution Display::DesktopResolution()
+		{
 			Resolution desktopResolution;
 #if defined(__linux__)
 			Display* pDisplay = XOpenDisplay(NULL);

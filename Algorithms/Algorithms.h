@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Conversion.h"
-//#include "Encoding.h"
+#ifdef USE_DATASTRUCTURES
+#include "Encoding.h"
+#endif // USE_DATASTRUCTURES
 #include "Encryption.h"
 #include "MathFunctions.h"
 #include "Searching.h"

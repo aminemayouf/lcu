@@ -2,8 +2,10 @@
 
 #include "IComparable.h"
 
-namespace LCU {
-	inline namespace Interfaces {
+namespace LCU
+{
+	inline namespace Interfaces
+	{
 		/**
 		 * IComparer Interface
 		 *
@@ -11,8 +13,8 @@ namespace LCU {
 		 * @author Amine MAYOUF
 		*/
 		template <class Class>
-		class IComparer {
-
+		class IComparer
+		{
 		public:
 			IComparer() = default;
 			virtual ~IComparer() = default;

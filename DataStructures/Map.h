@@ -23,7 +23,7 @@ namespace LCU
 		public:
 			using RedBlackTree<Pair<KeyType, ValueType>>::RedBlackTree;
 			// F
-			typename BinaryTree<Pair<KeyType, ValueType>>::Iterator FindByKey(const KeyType& p_key) const override;
+			typename BinaryTree<Pair<KeyType, ValueType>>::Iterator FindByKey(const KeyType& p_key) const;
 			// I
 		private:
 			void Insert(const Pair<KeyType, ValueType>& p_node) override;
@@ -37,7 +37,7 @@ namespace LCU
 			void InsertRecursive(const KeyType& p_key, const ValueType& p_value);
 			using BinarySearchTree<Pair<KeyType, ValueType>>::IsEmpty;
 			// R
-			void Remove(const KeyType& p_key) override;
+			void Remove(const KeyType& p_key);
 			// #
 			ValueType& operator[](const KeyType& p_key);
 		};

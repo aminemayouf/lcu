@@ -25,6 +25,7 @@ namespace LCU
 			AContainer(size_t p_size);
 
 			size_t Size() const;
+			using Object::ToString;
 		};
 
 		template <typename Type>

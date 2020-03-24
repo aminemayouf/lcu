@@ -1,15 +1,17 @@
 #pragma once
 
-namespace LCU {
-	inline namespace Interfaces {
+namespace LCU
+{
+	inline namespace Interfaces
+	{
 		/**
 		 * IObserver Interface
 		 *
 		 * @project Interfaces
 		 * @author Amine MAYOUF
 		 */
-		class IObserver {
-
+		class IObserver
+		{
 		public:
 			IObserver() = default;
 			virtual ~IObserver() = default;

@@ -1,8 +1,10 @@
 #pragma once
 
 
-namespace LCU {
-	inline namespace Interfaces {
+namespace LCU
+{
+	inline namespace Interfaces
+	{
 		/**
 		 * IContainer Interface
 		 *
@@ -10,8 +12,8 @@ namespace LCU {
 		 * @author Amine MAYOUF
 		 */
 		template <typename Type>
-		class IContainer {
-
+		class IContainer
+		{
 		public:
 			virtual ~IContainer() = default;
 

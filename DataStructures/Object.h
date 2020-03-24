@@ -20,5 +20,15 @@ namespace LCU
 		public:
 			virtual String ToString() const;
 		};
+
+		const char* Object::ToPrimitiveString() const
+		{
+			return ToString().ToPrimitiveString();
+		}
+
+		String Object::ToString() const
+		{
+			return PrimitiveObject::ToPrimitiveString();
+		}
 	}
 }

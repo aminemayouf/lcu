@@ -1,24 +1,24 @@
 #pragma once
 
+#include "../DataStructures/Str.h"
 
-namespace LCU {
-	inline namespace Algorithms {
+namespace LCU
+{
+	inline namespace Algorithms
+	{
 		/**
 		 * Encoding Class
 		 *
 		 * @project Algorithms
 		 * @author Amine MAYOUF
 		 */
-		class Encoding {
-			/*
-			* Methods
-			*/
+		class Encoding
+		{
 		public:
 			Encoding() = delete;
 			~Encoding() = delete;
 
 			static String RunLengthEncodingDecode(const String& p_stringToDecode);
-
 			static String RunLengthEncodingEncode(const String& p_stringToEncode);
 			static String RunLengthEncodingEncode(const String& p_stringToEncode, float& p_ratio);
 		};
