@@ -33,6 +33,7 @@ namespace LCU
 			Type ValueAt(size_t p_rowIndex, size_t p_columnIndex) const;
 			void Assign(const Type& p_value, size_t p_rowIndex, size_t p_columnIndex);
 			// A
+			Matrix Adjoint() const;
 			Type** AllocateMemory(size_t p_rows, size_t p_cols);
 			// C
 			Array<Type> ColumnAt(size_t p_index) const;
@@ -40,6 +41,8 @@ namespace LCU
 			static Type** CopyOf(Type** p_pDataM, size_t p_rows, size_t p_cols);
 			static void CopyValue(const Type& p_value, Type** p_pTo, size_t p_rows, size_t p_cols);
 			static void CopyValues(const Type** p_pFrom, Type** p_pTo, size_t p_rows, size_t p_cols);
+			// D
+			Type Determinant() const;
 			// F
 			void FillWith(const Type& p_value);
 			static void FreeMemory(Type** p_pDataM, size_t p_rows);
@@ -58,15 +61,37 @@ namespace LCU
 			// R		
 			void ReplaceAll(const Type& p_valueToReplace, const Type& p_replacementValue);
 			void ReplaceFirst(const Type& p_valueToReplace, const Type& p_replacementValue);
+			void Reverse();
+			Matrix Reversed() const;
 			// S
 			// void Sort(); // TODO : Implement
+			Matrix SubMatrix(size_t p_rowToSubstract, size_t p_columnToSubstract) const;
 			// T
 			String ToString() const override;
+			void Transpose();
+			Matrix Transposed() const;
 			// #
 			Matrix& operator =(const Matrix& p_matrix);
 			bool operator <(const Matrix& p_matrix) const override;
 			bool operator >(const Matrix& p_matrix) const override;
 			bool operator ==(const Matrix& p_matrix) const override;
+
+			Matrix operator +(const double& p_value) const;
+			Matrix operator +(const Matrix& p_matrix) const;
+			Matrix operator -(const double& p_value) const;
+			Matrix operator -(const Matrix& p_matrix) const;
+			Matrix operator *(const double& p_value) const;
+			Matrix operator *(const Matrix& p_matrix) const;
+			Matrix operator /(const double& p_value) const;
+			Matrix operator /(const Matrix& p_matrix) const;
+			Matrix& operator +=(const double& p_value);
+			Matrix& operator +=(const Matrix& p_matrix);
+			Matrix& operator -=(const double& p_value);
+			Matrix& operator -=(const Matrix& p_matrix);
+			Matrix& operator *=(const double& p_value);
+			Matrix& operator *=(const Matrix& p_matrix);
+			Matrix& operator /=(const double& p_value);
+			Matrix& operator /=(const Matrix& p_matrix);
 		};
 
 		template <typename Type>
@@ -142,6 +167,22 @@ namespace LCU
 				throw ArgumentOutOfRangeException();
 			}*/
 			m_pDataM[p_rowIndex][p_columnIndex] = p_value;
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::Adjoint() const
+		{
+			Matrix result(m_rows, m_cols);
+			double cofactor;
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					cofactor = MathFunctions::Pow(-1, static_cast<double>(i + j)) * SubMatrix(i, j).Determinant();
+					result.m_pDataM[i][j] = cofactor;
+				}
+			}
+			return result;
 		}
 
 		template <typename Type>
@@ -240,6 +281,65 @@ namespace LCU
 					p_pTo[i][j] = p_pFrom[i][j];
 				}
 			}
+		}
+
+		template <typename Type>
+		Type Matrix<Type>::Determinant() const
+		{
+			Type** pMatrix = new Type* [m_rows];
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				pMatrix[i] = new Type[m_cols];
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					pMatrix[i][j] = m_pDataM[i][j];
+				}
+			}
+
+			size_t rank, highestRank;
+			Type coefficient, highestCoefficient;
+			Type result = 1;
+
+			for (size_t i = 0; i < m_rows - 1; ++i)
+			{
+				highestRank = i;
+				for (rank = i + 1; rank < m_rows; ++rank)
+				{
+					if (MathFunctions::Abs(pMatrix[highestRank][i]) < MathFunctions::Abs(pMatrix[rank][i]))
+					{
+						highestRank = rank;
+					}
+				}
+
+				highestCoefficient = pMatrix[highestRank][i];
+
+				if (MathFunctions::Abs(highestCoefficient) <= 1e-10)
+				{
+					return 0;
+				}
+
+				if (highestRank != i)
+				{
+					for (size_t j = i; j < m_cols; ++j)
+					{
+						Utility::Swap(pMatrix[i][j], pMatrix[highestRank][j]);
+					}
+					result *= -1.;
+				}
+				result *= highestCoefficient;
+
+				for (rank = i + 1; rank < m_rows; ++rank)
+				{
+					coefficient = pMatrix[rank][i] / highestCoefficient;
+					for (size_t j = i; j < m_rows; ++j)
+					{
+						pMatrix[rank][j] -= coefficient * pMatrix[i][j];
+					}
+				}
+			}
+
+			result *= pMatrix[m_rows - 1][m_rows - 1];
+			return result;
 		}
 
 		template <typename Type>
@@ -411,6 +511,58 @@ namespace LCU
 		}
 
 		template <typename Type>
+		void Matrix<Type>::Reverse()
+		{
+			*this = Reversed();
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::Reversed() const
+		{
+			Matrix result;
+			double determinant = Determinant();
+			if (determinant != 0)
+			{
+				result = Adjoint();
+				result.Transpose();
+				result *= (1 / determinant);
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::SubMatrix(size_t p_rowToSubstract, size_t p_columnToSubstract) const
+		{
+			if (p_rowToSubstract > m_rows || p_columnToSubstract > m_cols)
+			{
+				//throw ArgumentOutOfRangeException();
+				return Matrix();
+			}
+			Matrix result(m_rows - 1, m_cols - 1);
+			size_t row = 0, column = 0;
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				if (i != p_rowToSubstract)
+				{
+					for (size_t j = 0; j < m_cols; ++j)
+					{
+						if (j != p_columnToSubstract)
+						{
+							result.m_pDataM[row][column] = m_pDataM[i][j];
+							++column;
+							if (column == m_cols - 1)
+							{
+								column = 0;
+								++row;
+							}
+						}
+					}
+				}
+			}
+			return result;
+		}
+
+		template <typename Type>
 		String Matrix<Type>::ToString() const
 		{
 			String result;
@@ -425,6 +577,26 @@ namespace LCU
 				result += "\n";
 			}
 			return result.SubString(0, result.Length() - 2);
+		}
+
+		template <typename Type>
+		void Matrix<Type>::Transpose()
+		{
+			*this = Transposed();
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::Transposed() const
+		{
+			Matrix result(m_cols, m_rows);
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					result.m_pDataM[j][i] = m_pDataM[i][j];
+				}
+			}
+			return result;
 		}
 
 		template <typename Type>
@@ -494,6 +666,244 @@ namespace LCU
 			}
 
 			return true;
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::operator+(const double& p_value) const
+		{
+			Matrix result(*this);
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					result.m_pDataM[i][j] += p_value;
+				}
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::operator+(const Matrix& p_matrix) const
+		{
+			/*if (m_rows != pMatrix.m_rows || m_cols != pMatrix.m_cols)
+			{
+				throw UnsupportedOperationException();
+			}*/
+
+			Matrix result(*this);
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					result.m_pDataM[i][j] += p_matrix.m_pDataM[i][j];
+				}
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::operator-(const double& p_value) const
+		{
+			/*if (m_rows != pMatrix.m_rows || m_cols != pMatrix.m_cols)
+			{
+				throw UnsupportedOperationException();
+			}*/
+
+			Matrix result(*this);
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					result.m_pDataM[i][j] -= p_value;
+				}
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::operator-(const Matrix& p_matrix) const
+		{
+			Matrix result(*this);
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					result.m_pDataM[i][j] -= p_matrix.m_pDataM[i][j];
+				}
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::operator*(const double& p_value) const
+		{
+			Matrix result(*this);
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					result.m_pDataM[i][j] *= p_value;
+				}
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::operator*(const Matrix& p_matrix) const
+		{
+			/*if (m_rows != pMatrix.m_cols || m_cols != pMatrix.m_rows)
+			{
+				throw ArgumentOutOfRangeException();
+			}*/
+
+			Matrix result(*this);
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < p_matrix.m_cols; ++j)
+				{
+					result.m_pDataM[i][j] = 0;
+					for (size_t k = 0; k < m_cols; ++k)
+					{
+						result.m_pDataM[i][j] += m_pDataM[i][k] * p_matrix.m_pDataM[k][j];
+					}
+				}
+			}
+			return result;
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::operator/(const double& p_value) const
+		{
+			// TODO: Implement
+			Matrix result;
+			return result;
+		}
+
+		template <typename Type>
+		Matrix<Type> Matrix<Type>::operator/(const Matrix& p_matrix) const
+		{
+			// TODO: Implement
+			Matrix result;
+			return result;
+		}
+
+		template <typename Type>
+		Matrix<Type>& Matrix<Type>::operator+=(const double& p_value)
+		{
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					m_pDataM[i][j] += p_value;
+				}
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Matrix<Type>& Matrix<Type>::operator+=(const Matrix& p_matrix)
+		{
+			/*if (m_rows != pMatrix.m_rows || m_cols != pMatrix.m_cols)
+			{
+				throw UnsupportedOperationException();
+			}*/
+
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					m_pDataM[i][j] += p_matrix.m_pDataM[i][j];
+				}
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Matrix<Type>& Matrix<Type>::operator-=(const double& p_value)
+		{
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					m_pDataM[i][j] -= p_value;
+				}
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Matrix<Type>& Matrix<Type>::operator-=(const Matrix& p_matrix)
+		{
+			/*if (m_rows != pMatrix.m_rows || m_cols != pMatrix.m_cols)
+			{
+				throw UnsupportedOperationException();
+			}*/
+
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					m_pDataM[i][j] -= p_matrix.m_pDataM[i][j];
+				}
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Matrix<Type>& Matrix<Type>::operator*=(const double& p_value)
+		{
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < m_cols; ++j)
+				{
+					m_pDataM[i][j] *= p_value;
+				}
+			}
+			return *this;
+		}
+
+		template <typename Type>
+		Matrix<Type>& Matrix<Type>::operator*=(const Matrix& p_matrix)
+		{
+			/*if (m_rows != pMatrix.m_cols || m_cols != pMatrix.m_rows)  {
+				throw UnsupportedOperationException();
+			}*/
+
+			double** pTemp = CopyOf(m_pDataM, m_rows, m_cols);
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				delete[] m_pDataM[i];
+				m_pDataM[i] = new double[p_matrix.m_cols];
+			}
+
+			for (size_t i = 0; i < m_rows; ++i)
+			{
+				for (size_t j = 0; j < p_matrix.m_cols; ++j)
+				{
+					m_pDataM[i][j] = 0;
+					for (size_t k = 0; k < m_cols; ++k)
+					{
+						m_pDataM[i][j] += pTemp[i][k] * p_matrix.m_pDataM[k][j];
+					}
+				}
+			}
+
+			m_cols = p_matrix.m_cols;
+			return *this;
+		}
+
+		template <typename Type>
+		Matrix<Type>& Matrix<Type>::operator/=(const double& p_value)
+		{
+			// TODO: Implement
+			return *this;
+		}
+
+		template <typename Type>
+		Matrix<Type>& Matrix<Type>::operator/=(const Matrix& p_matrix)
+		{
+			// TODO: Implement
+			return *this;
 		}
 	}
 }

@@ -1,11 +1,8 @@
 ﻿#include "Config.h"
 
 #include "Algorithms/Algorithms.h"
-
 #include "DataStructures/DataStructures.h"
-
 #include "Events/Event.h"
-
 #include "System/Display.h"
 
 #include <iostream>
@@ -79,10 +76,14 @@ int main(int argc, int argv[]) {
 	map.Insert("H1", 1);
 	map.Insert("H9", 9);
 	map.Insert("H2", 2);
-
 	map["H10"] = 20;
-
 	std::cout << map << std::endl;
+
+	LCU::Matrix<double> matrix(10, 10);
+	matrix.FillWith(5);
+	std::cout << matrix << std::endl;
+	std::cout << matrix.Determinant() << std::endl;
+
 #endif // USE_DATASTRUCTURES
 
 #ifdef USE_EVENTS
