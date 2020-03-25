@@ -71,7 +71,7 @@ namespace LCU
 
 		template <typename Type>
 		UndirectedGraph<Type>::UndirectedGraph()
-			: AContainer(), m_size, m_edges()
+			: AContainer(), m_edges()
 		{
 		}
 
