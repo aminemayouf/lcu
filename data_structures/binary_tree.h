@@ -3,8 +3,8 @@
 #include "array.h"
 #include "binary_tree_node.h"
 #include "forward_list.h"
-#include "stack.h"
 #include "queue.h"
+#include "stack.h"
 
 namespace lcu
 {

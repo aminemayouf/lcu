@@ -1,7 +1,7 @@
 #pragma once
 
-#include "red_black_tree.h"
 #include "pair.h"
+#include "red_black_tree.h"
 
 namespace lcu
 {

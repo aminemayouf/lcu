@@ -1,7 +1,7 @@
 #pragma once
 
-#include "event_handler_for_non_member_functions.h"
 #include "event_handler_for_member_functions.h"
+#include "event_handler_for_non_member_functions.h"
 
 namespace lcu
 {
