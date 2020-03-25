@@ -1,6 +1,5 @@
 #pragma once
 
-#include "IArithmetic.h"
 #include "IClonable.h"
 #include "IComparable.h"
 #include "IComparer.h"
