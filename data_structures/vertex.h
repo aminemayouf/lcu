@@ -61,43 +61,6 @@ namespace lcu
 		}
 
 		template <typename Type>
-		Array<Vertex<Type>>* Vertex<Type>::Neighbors() const
-		{
-			return nullptr;
-		}
-
-		template <typename Type>
-		void Vertex<Type>::AddNeighbor(const Vertex<Type>& p_neighbor)
-		{
-		}
-
-		template <typename Type>
-		size_t Vertex<Type>::Degree() const
-		{
-			size_t i = 0;
-			/*Successor<Type>* pCurrent = m_pSuccessors;
-			while (pCurrent)
-			{
-				if (pCurrent->key == key)
-				{
-					i += 2;
-				}
-				else
-				{
-					++i;
-				}
-				pCurrent = pCurrent->Next();
-			}*/
-			return i;
-		}
-
-		template <typename Type>
-		bool Vertex<Type>::IsAdjacent(const Vertex<Type>& p_vertex) const
-		{
-			return false;
-		}
-
-		template <typename Type>
 		bool Vertex<Type>::IsIncident(const Vertex<Type>& p_vertex) const
 		{
 			return IsAdjacent(p_vertex);
@@ -107,12 +70,6 @@ namespace lcu
 		bool Vertex<Type>::IsPendant() const
 		{
 			return Degree() == 1;
-		}
-
-		template <typename Type>
-		bool Vertex<Type>::IsIsolated() const
-		{
-			return true;
 		}
 
 		template <typename Type>

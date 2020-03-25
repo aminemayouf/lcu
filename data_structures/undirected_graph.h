@@ -43,19 +43,19 @@ namespace lcu
 			bool Contains(const Vertex<Type>& p_vertex) const override;
 			virtual bool Contains(const Edge<Type>* p_pEdge) const;
 			// D
-			size_t Degree() const;
+			size_t Degree();
 			// I
-			bool IsAcyclic() const;
-			bool IsBipartite(const Array<bool>& setOfVertices) const;
-			bool IsComplete() const;
+			bool IsAcyclic();
+			bool IsBipartite(const Array<bool>& setOfVertices);
+			bool IsComplete();
 			bool IsEmpty() const override;
-			bool IsMultigraph() const;
-			size_t IndexOf(const Edge<Type>& p_edge) const;
-			bool IsRegular() const;
-			bool IsSimple() const;
+			bool IsMultigraph();
+			size_t IndexOf(const Edge<Type>& p_edge);
+			bool IsRegular();
+			bool IsSimple();
 			// K
-			UndirectedGraph* kruskalMST() const;
-			static UndirectedGraph* kruskalMST(const UndirectedGraph& p_graph);
+			UndirectedGraph* KruskalMST() const;
+			static UndirectedGraph* KruskalMST(const UndirectedGraph& p_graph);
 			// O
 			//size_t Order() const;
 			// P
@@ -109,12 +109,6 @@ namespace lcu
 		{
 		}
 
-		//template <typename Type>
-		//Array<Vertex<Type>> Graph<Type>::Vertices() const
-		//{
-		//	return m_vertices;
-		//}
-
 		template <typename Type>
 		Array<Edge<Type>> UndirectedGraph<Type>::Edges() const
 		{
@@ -158,80 +152,25 @@ namespace lcu
 		}
 
 		template <typename Type>
-		bool UndirectedGraph<Type>::Contains(const Vertex<Type>& p_vertex) const
-		{
-			return false;
-		}
-
-		template <typename Type>
-		bool UndirectedGraph<Type>::Contains(const Edge<Type>* const p_pEdge) const
-		{
-			return false;
-		}
-
-		template <typename Type>
-		size_t UndirectedGraph<Type>::Degree() const
-		{
-			size_t maxDegree = 0;
-			return maxDegree;
-		}
-
-		template <typename Type>
-		bool UndirectedGraph<Type>::IsAcyclic() const
-		{
-			return false;
-		}
-
-		template <typename Type>
-		bool UndirectedGraph<Type>::IsBipartite(const Array<bool>& setOfVertices) const
-		{
-			return true;
-		}
-
-		template <typename Type>
-		bool UndirectedGraph<Type>::IsComplete() const
-		{
-			return true;
-		}
-
-		template <typename Type>
 		bool UndirectedGraph<Type>::IsEmpty() const
 		{
 			return m_edges.IsEmpty();
 		}
 
 		template <typename Type>
-		bool UndirectedGraph<Type>::IsMultigraph() const
+		bool UndirectedGraph<Type>::IsMultigraph()
 		{
 			return !IsSimple();
 		}
 
 		template <typename Type>
-		size_t UndirectedGraph<Type>::IndexOf(const Edge<Type>& p_edge) const
+		UndirectedGraph<Type>* UndirectedGraph<Type>::KruskalMST() const
 		{
-			return 0;
+			return KruskalMST(*this);
 		}
 
 		template <typename Type>
-		bool UndirectedGraph<Type>::IsRegular() const
-		{
-			return true;
-		}
-
-		template <typename Type>
-		bool UndirectedGraph<Type>::IsSimple() const
-		{
-			return true;
-		}
-
-		template <typename Type>
-		UndirectedGraph<Type>* UndirectedGraph<Type>::kruskalMST() const
-		{
-			return kruskalMST(*this);
-		}
-
-		template <typename Type>
-		UndirectedGraph<Type>* UndirectedGraph<Type>::kruskalMST(const UndirectedGraph<Type>& p_graph)
+		UndirectedGraph<Type>* UndirectedGraph<Type>::KruskalMST(const UndirectedGraph<Type>& p_graph)
 		{
 			int V = p_graph.Size();
 			int E = p_graph.Size() - 1;
