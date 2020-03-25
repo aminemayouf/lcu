@@ -1,9 +1,9 @@
 #include "Conversion.h"
 #include "Validation.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Algorithms
+	inline namespace algorithms
 	{
 		int Conversion::ToASCII(char p_primitiveChar)
 		{

@@ -5,9 +5,9 @@
 
 #include <ctime>
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Algorithms
+	inline namespace algorithms
 	{
 		/**
 		 * Sorting Class

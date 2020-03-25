@@ -1,8 +1,8 @@
 #include "Validation.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Algorithms
+	inline namespace algorithms
 	{
 		bool Validation::IsAlpha(char p_primitiveChar)
 		{

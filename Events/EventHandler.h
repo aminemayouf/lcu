@@ -3,9 +3,9 @@
 #include "EventHandlerForNonMemberFunctions.h"
 #include "EventHandlerForMemberFunctions.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Events
+	inline namespace events
 	{
 		/**
 		 * Event Handler Class

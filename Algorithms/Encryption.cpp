@@ -4,9 +4,9 @@
 #include "Validation.h"
 #include "Utility.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Algorithms
+	inline namespace algorithms
 	{
 		char* Encryption::CaesarCipher(const char* const p_stringToCipher, int p_shift)
 		{

@@ -3,9 +3,9 @@
 #include "../Algorithms/Utility.h"
 #include "../Interfaces/IPrintable.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace DataStructures
+	inline namespace data_structures
 	{
 		/**
 		 * PrimitiveObject Class

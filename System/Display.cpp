@@ -1,9 +1,9 @@
 #include "Display.h"
 
 
-namespace LCU
+namespace lcu
 {
-	inline namespace System
+	inline namespace system
 	{
 		// @return the horizontal and vertical screen sizes in pixels
 		Display::Resolution Display::DesktopResolution()

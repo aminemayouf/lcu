@@ -12,14 +12,14 @@
 #endif
 
 
-namespace LCU
+namespace lcu
 {
-	inline namespace System
+	inline namespace system
 	{
 		/**
 		 * Display Class
 		 *
-		 * @project System
+		 * @project system
 		 * @author Amine MAYOUF
 		*/
 		class Display

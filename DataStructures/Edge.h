@@ -2,9 +2,9 @@
 
 #include "Vertex.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace DataStructures
+	inline namespace data_structures
 	{
 		/**
 		 * Edge Class

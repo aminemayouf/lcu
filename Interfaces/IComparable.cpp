@@ -1,8 +1,8 @@
 #include "IComparable.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Interfaces
+	inline namespace interfaces
 	{
 	}
 }

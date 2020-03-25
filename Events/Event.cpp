@@ -1,8 +1,8 @@
 #include "Event.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Events
+	inline namespace events
 	{
 	}
 }

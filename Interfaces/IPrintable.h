@@ -2,9 +2,9 @@
 
 #include <ostream>
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Interfaces
+	inline namespace interfaces
 	{
 		/**
 		 * IPrintable Interface

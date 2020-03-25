@@ -2,9 +2,9 @@
 
 #include "IForwardIterator.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Interfaces
+	inline namespace interfaces
 	{
 		/**
 		 * IIterator Interface

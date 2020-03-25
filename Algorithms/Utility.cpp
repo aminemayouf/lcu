@@ -1,8 +1,8 @@
 #include "Utility.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Algorithms
+	inline namespace algorithms
 	{
 		size_t Utility::AdaptedCapacity(size_t p_size)
 		{

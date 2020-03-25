@@ -4,9 +4,9 @@
 #include "UndirectedGraph.h"
 #include "ForwardList.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace DataStructures
+	inline namespace data_structures
 	{
 		/**
 		 * Directed Graph Class

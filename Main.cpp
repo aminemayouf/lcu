@@ -2,8 +2,8 @@
 
 #include "Algorithms/Algorithms.h"
 #include "DataStructures/DataStructures.h"
-#include "Events/Event.h"
-#include "System/Display.h"
+#include "Events/Events.h"
+#include "System/System.h"
 
 #include <iostream>
 #include <chrono>
@@ -27,21 +27,21 @@ int main(int argc, int argv[]) {
 	char* str = "Hello world!";
 	char c = str[4];
 
-	std::cout << "ToLowerCase(" << c << ") = " << LCU::Algorithms::Conversion::ToLowerCase(c) << std::endl;
+	std::cout << "ToLowerCase(" << c << ") = " << lcu::algorithms::Conversion::ToLowerCase(c) << std::endl;
 
-	char* estr = LCU::Algorithms::Encryption::CaesarCipher(str, 5);
+	char* estr = lcu::algorithms::Encryption::CaesarCipher(str, 5);
 	std::cout << "CaesarCipher(" << str << ") = " << estr << std::endl;
-	std::cout << "CaesarDecypher(" << estr << ") = " << LCU::Algorithms::Encryption::CaesarDecipher(estr, 5) << std::endl;
-	estr = LCU::Algorithms::Encryption::VigenereCipher(str, "MyKey");
+	std::cout << "CaesarDecypher(" << estr << ") = " << lcu::algorithms::Encryption::CaesarDecipher(estr, 5) << std::endl;
+	estr = lcu::algorithms::Encryption::VigenereCipher(str, "MyKey");
 	std::cout << "VigenereCypher(" << str << ") = " << estr << std::endl;
-	std::cout << "VigenereDecypher(" << estr << ") = " << LCU::Algorithms::Encryption::VigenereDecipher(estr, "MyKey") << std::endl;
+	std::cout << "VigenereDecypher(" << estr << ") = " << lcu::algorithms::Encryption::VigenereDecipher(estr, "MyKey") << std::endl;
 
-	std::cout << "BinarySearch(" << c << ") = " << LCU::Algorithms::Searching<char>::BinarySearch(str, strlen(str), c) << std::endl;
-	std::cout << "SequentialSearch(" << c << ") = " << LCU::Algorithms::Searching<char>::SequentialSearch(str, strlen(str), c) << std::endl;
+	std::cout << "BinarySearch(" << c << ") = " << lcu::algorithms::Searching<char>::BinarySearch(str, strlen(str), c) << std::endl;
+	std::cout << "SequentialSearch(" << c << ") = " << lcu::algorithms::Searching<char>::SequentialSearch(str, strlen(str), c) << std::endl;
 
 	int* ints = new int[N];
 	for (size_t i = 0; i < N; ++i) {
-		ints[i] = LCU::Algorithms::Utility::RandomInt(0, 9);
+		ints[i] = lcu::algorithms::Utility::RandomInt(0, 9);
 	}
 	std::cout << "QuickSort(";
 	for (int i = 0; i < N; ++i) {
@@ -49,26 +49,26 @@ int main(int argc, int argv[]) {
 	}
 	std::cout << ") = ";
 	auto start = std::chrono::high_resolution_clock::now();
-	LCU::Algorithms::Sorting<int>::QuickSort(ints, 0, N-1);
+	lcu::algorithms::Sorting<int>::QuickSort(ints, 0, N-1);
 	auto stop = std::chrono::high_resolution_clock::now();
 	for (int i = 0; i < N; ++i) {
 		std::cout << ints[i];
 	}
 	std::cout << " | " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "µs" << std::endl;
 
-	int rint = LCU::Algorithms::Utility::RandomInt()%10;
+	int rint = lcu::algorithms::Utility::RandomInt()%10;
 	std::cout << "RandomInt() = " << rint << std::endl;
 
-	std::cout << "IsLowerCase(" << c << ") = " << LCU::Algorithms::Validation::IsLowerCase(c) << std::endl;
+	std::cout << "IsLowerCase(" << c << ") = " << lcu::algorithms::Validation::IsLowerCase(c) << std::endl;
 
 	delete[] ints;
 
-	std::cout << "Sqrt(" << rint << ") = " << LCU::Algorithms::MathFunctions::Sqrt(rint) << std::endl;
+	std::cout << "Sqrt(" << rint << ") = " << lcu::algorithms::MathFunctions::Sqrt(rint) << std::endl;
 
 #endif // USE_ALGORITHMS
 
 #ifdef USE_DATASTRUCTURES
-	LCU::Map<LCU::String, int> map;
+	lcu::Map<lcu::String, int> map;
 	map.InsertRecursive("H10", 10);
 	map.InsertRecursive("H15", 15);
 	map.InsertRecursive("H10", 10);
@@ -79,7 +79,7 @@ int main(int argc, int argv[]) {
 	map["H10"] = 20;
 	std::cout << map << std::endl;
 
-	LCU::Matrix<double> matrix(10, 10);
+	lcu::Matrix<double> matrix(10, 10);
 	matrix.FillWith(5);
 	std::cout << matrix << std::endl;
 	std::cout << matrix.Determinant() << std::endl;
@@ -87,15 +87,15 @@ int main(int argc, int argv[]) {
 #endif // USE_DATASTRUCTURES
 
 #ifdef USE_EVENTS
-	LCU::Event<void> randomEvent;
-	randomEvent += LCU::EventHandler::Bind(Hello);
-	randomEvent += LCU::EventHandler::Bind(World);
-	randomEvent -= LCU::EventHandler::Bind(Hello);
+	lcu::Event<void> randomEvent;
+	randomEvent += lcu::EventHandler::Bind(Hello);
+	randomEvent += lcu::EventHandler::Bind(World);
+	randomEvent -= lcu::EventHandler::Bind(Hello);
 	randomEvent();
 #endif // USE_EVENTS
 
 #ifdef USE_SYSTEM
-	LCU::System::Display::Resolution desktopResolution = LCU::System::Display::DesktopResolution();
+	lcu::system::Display::Resolution desktopResolution = lcu::system::Display::DesktopResolution();
 	std::cout << "Display resolution is " << desktopResolution.horizontal << "x" << desktopResolution.vertical << std::endl;
 #endif // USE_SYSTEM
 

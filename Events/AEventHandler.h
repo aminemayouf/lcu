@@ -1,9 +1,9 @@
 #pragma once
 
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Events
+	inline namespace events
 	{
 		/**
 		 * Abstract Event Handler Class

@@ -3,9 +3,9 @@
 #include "Array.h"
 #include "Node.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace DataStructures
+	inline namespace data_structures
 	{
 		/**
 		 * Vertex Class

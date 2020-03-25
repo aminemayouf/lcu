@@ -1,8 +1,8 @@
 #include "RedBlackTreeNode.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace DataStructures
+	inline namespace data_structures
 	{
 	}
 }

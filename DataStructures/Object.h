@@ -3,9 +3,9 @@
 #include "PrimitiveObject.h"
 #include "Str.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace DataStructures
+	inline namespace data_structures
 	{
 		/**
 		 * Object Class

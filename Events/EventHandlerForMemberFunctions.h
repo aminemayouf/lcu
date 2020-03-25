@@ -3,9 +3,9 @@
 
 #include "AEventHandler.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Events
+	inline namespace events
 	{
 		/**
 		 * Event Handler For Member Functions Class

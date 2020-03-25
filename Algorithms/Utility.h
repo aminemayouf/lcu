@@ -4,9 +4,9 @@
 #include <random>
 
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Algorithms
+	inline namespace algorithms
 	{
 		/**
 		 * Utility Class

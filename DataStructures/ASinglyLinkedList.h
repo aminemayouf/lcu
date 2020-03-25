@@ -5,9 +5,9 @@
 
 #include "../Interfaces/IForwardIterator.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace DataStructures
+	inline namespace data_structures
 	{
 		/**
 		 * ASinglyLinkedList Class

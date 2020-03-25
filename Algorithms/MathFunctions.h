@@ -7,9 +7,9 @@
 #define PI 3.1415926535897932384626433832795
 #define PRECISION 1E-16
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Algorithms
+	inline namespace algorithms
 	{
 		/**
 		 * MathFunctions Class

@@ -5,9 +5,9 @@
 
 #include <typeinfo>
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Events
+	inline namespace events
 	{
 		/**
 		 * Event Handler For Non Member Functions Class

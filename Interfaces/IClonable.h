@@ -1,14 +1,14 @@
 #pragma once
 
 
-namespace LCU
+namespace lcu
 {
-	inline namespace DataStructures
+	inline namespace data_structures
 	{
 		class Object;
 	}
 
-	inline namespace Interfaces
+	inline namespace interfaces
 	{
 		/**
 		 * IClonable Interface

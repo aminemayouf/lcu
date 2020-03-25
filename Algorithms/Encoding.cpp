@@ -1,9 +1,9 @@
 #include "Encoding.h"
 
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Algorithms
+	inline namespace algorithms
 	{
 		String Encoding::RunLengthEncodingDecode(const String& p_stringToDecode)
 		{

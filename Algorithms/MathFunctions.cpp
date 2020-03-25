@@ -1,8 +1,8 @@
 #include "MathFunctions.h"
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Algorithms
+	inline namespace algorithms
 	{
 	}
 }

@@ -1,8 +1,8 @@
 #pragma once
 
-namespace LCU
+namespace lcu
 {
-	inline namespace Interfaces
+	inline namespace interfaces
 	{
 		/**
 		 * IForwardIterator Interface
