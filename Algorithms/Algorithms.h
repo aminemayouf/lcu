@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Conversion.h"
-#ifdef USE_DATASTRUCTURES
-#include "Encoding.h"
-#endif // USE_DATASTRUCTURES
-#include "Encryption.h"
-#include "MathFunctions.h"
-#include "Searching.h"
-#include "Sorting.h"
-#include "Utility.h"
-#include "Validation.h"
+#include "conversion.h"
+#ifdef USE_data_structures
+#include "encoding.h"
+#endif // USE_data_structures
+#include "encryption.h"
+#include "math_functions.h"
+#include "searching.h"
+#include "sorting.h"
+#include "utility.h"
+#include "validation.h"

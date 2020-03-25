@@ -6,9 +6,9 @@ project("Algorithms" VERSION 0.1)
 file(GLOB Algorithms_SRC
     "*.cpp"
 )
-list(FILTER Algorithms_SRC EXCLUDE REGEX "./Encoding.cpp$")
-if(USE_DATASTRUCTURES)
-    list(APPEND Algorithms_SRC "Encoding.cpp")
+list(FILTER Algorithms_SRC EXCLUDE REGEX "./encoding.cpp$")
+if(USE_data_structures)
+    list(APPEND Algorithms_SRC "encoding.cpp")
 endif()
 
 add_library(${PROJECT_NAME} ${Algorithms_SRC})
@@ -22,9 +22,9 @@ install(TARGETS ${PROJECT_NAME} DESTINATION lib)
 file(GLOB Algorithms_H
     "*.h"
 )
-list(FILTER Algorithms_H EXCLUDE REGEX "./Encoding.h$")
-if(USE_DATASTRUCTURES)
-    list(APPEND Algorithms_H "Encoding.h")
+list(FILTER Algorithms_H EXCLUDE REGEX "./encoding.h$")
+if(USE_data_structures)
+    list(APPEND Algorithms_H "encoding.h")
 endif()
 
 install(FILES

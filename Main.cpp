@@ -1,9 +1,9 @@
-﻿#include "Config.h"
+﻿#include "config.h"
 
-#include "Algorithms/Algorithms.h"
-#include "DataStructures/DataStructures.h"
-#include "Events/Events.h"
-#include "System/System.h"
+#include "algorithms/algorithms.h"
+#include "data_structures/data_structures.h"
+#include "events/events.h"
+#include "system/system.h"
 
 #include <iostream>
 #include <chrono>
@@ -67,7 +67,7 @@ int main(int argc, int argv[]) {
 
 #endif // USE_ALGORITHMS
 
-#ifdef USE_DATASTRUCTURES
+#ifdef USE_data_structures
 	lcu::Map<lcu::String, int> map;
 	map.InsertRecursive("H10", 10);
 	map.InsertRecursive("H15", 15);
@@ -84,7 +84,7 @@ int main(int argc, int argv[]) {
 	std::cout << matrix << std::endl;
 	std::cout << matrix.Determinant() << std::endl;
 
-#endif // USE_DATASTRUCTURES
+#endif // USE_data_structures
 
 #ifdef USE_EVENTS
 	lcu::Event<void> randomEvent;

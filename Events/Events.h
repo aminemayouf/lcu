@@ -1,7 +1,7 @@
 #pragma once
 
-#include "AEventHandler.h"
-#include "Event.h"
-#include "EventHandler.h"
-#include "EventHandlerForMemberFunctions.h"
-#include "EventHandlerForNonMemberFunctions.h"
+#include "abstract_event_handler.h"
+#include "event.h"
+#include "event_handler.h"
+#include "event_handler_for_member_functions.h"
+#include "event_handler_for_non_member_functions.h"

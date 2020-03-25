@@ -1,8 +1,7 @@
-#include "Encryption.h"
-#include "Conversion.h"
-#include "Encryption.h"
-#include "Validation.h"
-#include "Utility.h"
+#include "encryption.h"
+#include "conversion.h"
+#include "validation.h"
+#include "utility.h"
 
 namespace lcu
 {

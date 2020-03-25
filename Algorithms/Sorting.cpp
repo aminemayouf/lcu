@@ -1,4 +1,4 @@
-#include "Sorting.h"
+#include "sorting.h"
 
 namespace lcu
 {

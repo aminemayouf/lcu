@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../DataStructures/Str.h"
+#include "../data_structures/str.h"
 
 namespace lcu
 {

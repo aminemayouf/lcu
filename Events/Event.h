@@ -1,10 +1,10 @@
 #pragma once
 
 
-#include "EventHandler.h"
+#include "event_handler.h"
 
 #ifdef USE_DATASTRUSTURES
-#include "DataStructures/Set.h"
+#include "data_structures/set.h"
 #else
 #include <set>
 #endif
