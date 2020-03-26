@@ -9,7 +9,7 @@ namespace lcu
 	{
 		char* Encryption::CaesarCipher(const char* const p_stringToCipher, int p_shift)
 		{
-			size_t stringToCipherLength = Utility::LengthOf(p_stringToCipher);
+			const size_t stringToCipherLength = Utility::LengthOf(p_stringToCipher);
 			char* result = Utility::CopyOf(p_stringToCipher, stringToCipherLength);
 			p_shift %= 26;
 
@@ -30,7 +30,7 @@ namespace lcu
 
 		char* Encryption::CaesarDecipher(const char* const p_stringToDecipher, int p_shift)
 		{
-			size_t stringToDecipherLength = Utility::LengthOf(p_stringToDecipher);
+			const size_t stringToDecipherLength = Utility::LengthOf(p_stringToDecipher);
 			char* result = Utility::CopyOf(p_stringToDecipher, stringToDecipherLength);
 			p_shift %= 26;
 
@@ -52,7 +52,7 @@ namespace lcu
 		char* Encryption::VigenereCipher(const char* const p_stringToCipher, char* const p_key)
 		{
 			char** vigenereTable = VignereSquare();
-			size_t stringToCipherLength = Utility::LengthOf(p_stringToCipher);
+			const size_t stringToCipherLength = Utility::LengthOf(p_stringToCipher);
 			char* result = Utility::CopyOf(p_stringToCipher, stringToCipherLength);
 			size_t c = 0;
 
@@ -89,7 +89,7 @@ namespace lcu
 		char* Encryption::VigenereDecipher(const char* const p_stringToDecipher, char* const p_key)
 		{
 			char** vigenereTable = VignereSquare();
-			size_t stringToDecipherLength = Utility::LengthOf(p_stringToDecipher);
+			const size_t stringToDecipherLength = Utility::LengthOf(p_stringToDecipher);
 			char* result = Utility::CopyOf(p_stringToDecipher, stringToDecipherLength);
 			size_t c = 0;
 

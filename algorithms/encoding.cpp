@@ -7,7 +7,7 @@ namespace lcu
 	{
 		String Encoding::RunLengthEncodingDecode(const String& p_stringToDecode)
 		{
-			char flag = '@';
+			const char flag = '@';
 			String result;
 
 			for (size_t i = 0; i < p_stringToDecode.Length(); ++i)
@@ -39,7 +39,7 @@ namespace lcu
 
 		String Encoding::RunLengthEncodingEncode(const String& p_stringToEncode)
 		{
-			char flag = '@';
+			const char flag = '@';
 			String result;
 
 			int c = 1;

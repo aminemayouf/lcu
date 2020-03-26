@@ -520,7 +520,7 @@ namespace lcu
 		Matrix<Type> Matrix<Type>::Reversed() const
 		{
 			Matrix result;
-			double determinant = Determinant();
+			const double determinant = Determinant();
 			if (determinant != 0)
 			{
 				result = Adjoint();

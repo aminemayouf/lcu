@@ -215,7 +215,7 @@ namespace lcu
 
 		inline void String::Append(const char* const p_pPrimitiveCharT)
 		{
-			size_t newLength = Utility::LengthOf(p_pPrimitiveCharT);
+			const size_t newLength = Utility::LengthOf(p_pPrimitiveCharT);
 			if (m_length + newLength <= m_capacity)
 			{
 				for (size_t i = m_length; i < m_length + newLength; ++i)
@@ -332,7 +332,7 @@ namespace lcu
 
 		inline bool String::Contains(const char* const p_pPrimitiveCharT) const
 		{
-			size_t primitiveCharTLength = Utility::LengthOf(p_pPrimitiveCharT);
+			const size_t primitiveCharTLength = Utility::LengthOf(p_pPrimitiveCharT);
 			if (m_length < primitiveCharTLength)
 			{
 				return false;
@@ -422,7 +422,7 @@ namespace lcu
 
 		inline bool String::EndsWith(const char* const p_pPrimitiveCharT) const
 		{
-			size_t primitiveCharTLength = Utility::LengthOf(p_pPrimitiveCharT);
+			const size_t primitiveCharTLength = Utility::LengthOf(p_pPrimitiveCharT);
 			if (m_length < primitiveCharTLength)
 			{
 				return false;
@@ -515,8 +515,8 @@ namespace lcu
 			}
 			else
 			{
-				size_t primitiveCharTLength = Utility::LengthOf(p_pPrimitiveCharT);
-				size_t charTLength = m_length + primitiveCharTLength;
+				const size_t primitiveCharTLength = Utility::LengthOf(p_pPrimitiveCharT);
+				const size_t charTLength = m_length + primitiveCharTLength;
 				if (m_capacity >= charTLength)
 				{
 					for (size_t i = m_length + primitiveCharTLength - 1; i > primitiveCharTLength; i--)
@@ -567,7 +567,7 @@ namespace lcu
 			}
 			else
 			{
-				size_t charTLength = m_length + p_string.m_length;
+				const size_t charTLength = m_length + p_string.m_length;
 				if (m_capacity >= charTLength)
 				{
 					for (size_t i = m_length + p_string.m_length - 1; i > p_string.m_length; i--)
@@ -652,7 +652,7 @@ namespace lcu
 
 		inline size_t String::Occurrences(const char* const p_pPrimitiveCharT) const
 		{
-			size_t primitiveCharTLength = Utility::LengthOf(p_pPrimitiveCharT);
+			const size_t primitiveCharTLength = Utility::LengthOf(p_pPrimitiveCharT);
 			if (m_length < primitiveCharTLength)
 			{
 				return 0;
@@ -752,8 +752,8 @@ namespace lcu
 			else
 			{
 				size_t k = 0;
-				size_t charOccurrences = Occurrences(p_charToReplace);
-				size_t charTLength = p_replacementString.m_length * charOccurrences + (m_length - charOccurrences);
+				const size_t charOccurrences = Occurrences(p_charToReplace);
+				const size_t charTLength = p_replacementString.m_length * charOccurrences + (m_length - charOccurrences);
 				Char* pCharT = new Char[charTLength + 1];
 
 				for (size_t i = 0; i < m_length; ++i)
@@ -790,8 +790,8 @@ namespace lcu
 			size_t j = 0;
 			size_t k = 0;
 			size_t l = 0;
-			size_t stringToReplaceOccurences = Occurrences(p_stringToReplace);
-			size_t charTLength = stringToReplaceOccurences + (m_length - p_stringToReplace.m_length *
+			const size_t stringToReplaceOccurences = Occurrences(p_stringToReplace);
+			const size_t charTLength = stringToReplaceOccurences + (m_length - p_stringToReplace.m_length *
 				stringToReplaceOccurences);
 			Char* pCharT = new Char[charTLength + 1];
 
@@ -833,8 +833,8 @@ namespace lcu
 			size_t j = 0;
 			size_t k = 0;
 			size_t l = 0;
-			size_t stringOccurrences = Occurrences(p_stringToReplace);
-			size_t charTLength = stringOccurrences * p_replacementString.m_length + (m_length - p_stringToReplace.
+			const size_t stringOccurrences = Occurrences(p_stringToReplace);
+			const size_t charTLength = stringOccurrences * p_replacementString.m_length + (m_length - p_stringToReplace.
 				m_length * stringOccurrences);
 			Char* pCharT = new Char[charTLength + 1];
 
@@ -928,7 +928,7 @@ namespace lcu
 
 		inline bool String::StartsWith(const char* const p_pPrimitiveCharT) const
 		{
-			size_t primitiveCharTLength = Utility::LengthOf(p_pPrimitiveCharT);
+			const size_t primitiveCharTLength = Utility::LengthOf(p_pPrimitiveCharT);
 			if (m_length < primitiveCharTLength)
 			{
 				return false;
@@ -1182,7 +1182,7 @@ namespace lcu
 
 		bool String::operator<(const String& p_string) const
 		{
-			size_t n = m_length < p_string.m_length ? m_length : p_string.m_length;
+			const size_t n = m_length < p_string.m_length ? m_length : p_string.m_length;
 			for (size_t i = 0; i < n; ++i)
 			{
 				if (m_pCharT[i] < p_string.m_pCharT[i])
@@ -1212,7 +1212,7 @@ namespace lcu
 
 		bool String::operator>(const String& p_string) const
 		{
-			size_t n = m_length < p_string.m_length ? m_length : p_string.m_length;
+			const size_t n = m_length < p_string.m_length ? m_length : p_string.m_length;
 			for (size_t i = 0; i < n; ++i)
 			{
 				if (m_pCharT[i] < p_string.m_pCharT[i])
@@ -1229,7 +1229,7 @@ namespace lcu
 
 		inline bool String::operator ==(const char* const p_pPrimitiveCharT) const
 		{
-			size_t otherLength = Utility::LengthOf(p_pPrimitiveCharT);
+			const size_t otherLength = Utility::LengthOf(p_pPrimitiveCharT);
 			if (m_length != otherLength)
 			{
 				return false;
@@ -1262,7 +1262,7 @@ namespace lcu
 
 		inline bool String::operator !=(const char* const p_pPrimitiveCharT) const
 		{
-			size_t otherLength = Utility::LengthOf(p_pPrimitiveCharT);
+			const size_t otherLength = Utility::LengthOf(p_pPrimitiveCharT);
 			if (m_length != otherLength)
 			{
 				return true;

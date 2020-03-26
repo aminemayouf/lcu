@@ -199,8 +199,8 @@ namespace lcu
 				Edge<int> nextEdge = p_graph.Edges()[i];
 				++i;
 
-				int x = set.find(nextEdge.src);
-				int y = set.find(nextEdge.dest);
+				const int x = set.find(nextEdge.src);
+				const int y = set.find(nextEdge.dest);
 
 				// If including this edge does't cause cycle, 
 				// include it in 'edges' and increment the index 

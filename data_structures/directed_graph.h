@@ -182,7 +182,7 @@ namespace lcu
 				return Array<size_t>();
 			}
 
-			Array<bool> visited(m_size, false);
+			const Array<bool> visited(m_size, false);
 			Array<int> paths(m_size, -1);
 			Array<size_t> distances(m_size, static_cast<size_t>(INFINITY));
 

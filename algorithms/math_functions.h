@@ -127,7 +127,7 @@ namespace lcu
 			// On utilise le DSE de asin : p_x + p_x^3/3 * (1/2) + p_x^5/5 * (1*3)/(2*4) + p_x^7/7*(1*3*5)/(2*4*6)...
 			double result = 1;
 			double coefficient = 1;
-			double xSquared = p_x * p_x;
+			const double xSquared = p_x * p_x;
 			int i = 1;
 			do
 			{
@@ -148,7 +148,7 @@ namespace lcu
 			// On utilise le DSE de Arcsinh : p_x - p_x^3/3 * (1/2) + p_x^5/5 * (1*3)/(2*4) - p_x^7/7*(1*3*5)/(2*4*6)...
 			double result = 1;
 			double coefficient = 1;
-			double xSquared = p_x * p_x;
+			const double xSquared = p_x * p_x;
 			int i = 1;
 			do
 			{
@@ -177,7 +177,7 @@ namespace lcu
 
 		inline double MathFunctions::Ceil(double p_x)
 		{
-			int xIntPart = IntegerPart(p_x);
+			const int xIntPart = IntegerPart(p_x);
 			if (p_x < 0)
 			{
 				return xIntPart;
@@ -208,7 +208,7 @@ namespace lcu
 			p_x = Mod(p_x, 2 * PI);
 			// On utilise le DSE du Cos : 1 - p_x^2/2! + p_x^4/4! - p_x^6/6!...
 			double result = 1;
-			double xSquared = p_x * p_x;
+			const double xSquared = p_x * p_x;
 			double coefficient = 1;
 			int i = 1;
 			do
@@ -223,7 +223,7 @@ namespace lcu
 
 		inline double MathFunctions::Cosh(double p_x)
 		{
-			double expX = Exp(p_x);
+			const double expX = Exp(p_x);
 			return (expX + 1 / expX) / 2;
 		}
 
@@ -260,7 +260,7 @@ namespace lcu
 
 		inline double MathFunctions::Fact(double p_x)
 		{
-			int xIntPart = IntegerPart(p_x);
+			const int xIntPart = IntegerPart(p_x);
 			if (p_x > 0)
 			{
 				return xIntPart;
@@ -434,7 +434,7 @@ namespace lcu
 		// Quand l'exposant p_x'est pas entier
 		inline double MathFunctions::Pow(double p_x, double p_y)
 		{
-			int yIntPart = IntegerPart(p_y);
+			const int yIntPart = IntegerPart(p_y);
 			// Si p_x<0 et que y p_x'est pas entier
 			if (p_x < 0 && static_cast<double>(yIntPart) != p_y)
 			{
@@ -458,7 +458,7 @@ namespace lcu
 			p_x = Mod(p_x, 2 * PI);
 			// On utilise le DSE du Sin : p_x - p_x^3/3! + p_x^5/5! - p_x^7/7!... en le factorisant par p_x
 			double result = 1;
-			double xSquared = p_x * p_x;
+			const double xSquared = p_x * p_x;
 			double coefficient = 1;
 			int i = 2;
 			do
@@ -473,14 +473,14 @@ namespace lcu
 
 		inline double MathFunctions::Sinh(double p_x)
 		{
-			double expX = Exp(p_x);
+			const double expX = Exp(p_x);
 			return (expX - 1 / expX) / 2;
 		}
 
 		inline double MathFunctions::Sqrt(double p_x)
 		{
 			// double a = (eventually the main method will plug values into a)
-			double a = static_cast<double>(p_x);
+			const double a = static_cast<double>(p_x);
 			double x = 1;
 			// For loop to get the square root value of the entered number.
 			for (size_t i = 0; i < p_x; i++)
@@ -496,7 +496,7 @@ namespace lcu
 			p_x = Mod(p_x, PI);
 			// On utilise simultan�ment les DSE de Cos et de Sin
 			double sin = 1, cos = 1;
-			double xSquared = p_x * p_x;
+			const double xSquared = p_x * p_x;
 			double coefficient = 1;
 			int i = 1;
 			do
@@ -512,7 +512,7 @@ namespace lcu
 
 		inline double MathFunctions::Tanh(double p_x)
 		{
-			double expX = Exp(p_x);
+			const double expX = Exp(p_x);
 			return (expX - 1 / expX) / (expX + 1 / expX);
 		}
 	}

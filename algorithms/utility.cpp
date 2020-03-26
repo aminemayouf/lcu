@@ -50,7 +50,7 @@ namespace lcu
 		{
 			std::random_device device;
 			std::mt19937 range(device());
-			std::uniform_int_distribution<std::mt19937::result_type> distribution(p_min, p_max);
+			const std::uniform_int_distribution<std::mt19937::result_type> distribution(p_min, p_max);
 			// distribution in range [min, max]
 			return distribution(range);
 		}
