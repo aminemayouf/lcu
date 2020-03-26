@@ -144,7 +144,7 @@ namespace lcu
 				{
 					if (k + c > 90)
 					{
-						result[i][c] = (k + static_cast<char>(c)) - 26;
+						result[i][c] = k + static_cast<char>(c) - 26;
 					}
 					else
 					{

@@ -99,7 +99,7 @@ namespace lcu
 
 		inline double MathFunctions::Abs(double p_x)
 		{
-			return (p_x < 0) ? -p_x : p_x;
+			return p_x < 0 ? -p_x : p_x;
 		}
 
 		inline double MathFunctions::Arccos(double p_x)
@@ -131,7 +131,7 @@ namespace lcu
 			int i = 1;
 			do
 			{
-				coefficient *= (xSquared * (2 * i - 1)) / (2 * i);
+				coefficient *= xSquared * (2 * i - 1) / (2 * i);
 				result += coefficient / (2 * i + 1);
 				++i;
 			}
@@ -213,7 +213,7 @@ namespace lcu
 			int i = 1;
 			do
 			{
-				coefficient = (-coefficient * xSquared) / (i * (i + 1));
+				coefficient = -coefficient * xSquared / (i * (i + 1));
 				result += coefficient;
 				i += 2;
 			}
@@ -297,7 +297,7 @@ namespace lcu
 
 		inline bool MathFunctions::IsPair(double p_x)
 		{
-			return ((Mod(p_x, 2)) == 0) ? true : false;
+			return Mod(p_x, 2) == 0 ? true : false;
 		}
 
 		inline bool MathFunctions::IsPerfectSquare(long p_x)
@@ -358,7 +358,7 @@ namespace lcu
 
 		inline int MathFunctions::LCM(int p_x, int p_y)
 		{
-			return (p_x * p_y) / GCD(p_x, p_y);
+			return p_x * p_y / GCD(p_x, p_y);
 		}
 
 		inline double MathFunctions::Log(double p_x)
@@ -419,7 +419,7 @@ namespace lcu
 			// Si l'exposant est negatif, on utilise p_x^(-y) = 1/(p_x^y)
 			if (p_y < 0)
 			{
-				return 1 / (Pow(p_x, -p_y));
+				return 1 / Pow(p_x, -p_y);
 			}
 			// ici l'exposant est positif
 			// On multiplie par p_x, y fois
@@ -463,7 +463,7 @@ namespace lcu
 			int i = 2;
 			do
 			{
-				coefficient = (-coefficient * xSquared) / (i * (i + 1));
+				coefficient = -coefficient * xSquared / (i * (i + 1));
 				result += coefficient;
 				i += 2;
 			}

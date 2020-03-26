@@ -109,7 +109,7 @@ namespace lcu
 				//throw ArgumentOutOfRangeException();
 				return;
 			}
-			Vertex<Type>* pCurrentVertex = &(*VertexAt(p_startVertex));
+			Vertex<Type>* pCurrentVertex = &*VertexAt(p_startVertex);
 			pCurrentVertex->SetSuccessors(
 				new Successor<Type>(p_arrivalVertex, p_arcWeight, pCurrentVertex->Successors()));
 
@@ -197,7 +197,7 @@ namespace lcu
 				currentKey = -1;
 				for (size_t i(0); i < m_size; ++i)
 				{
-					if (!visited[i] && (distances[i] < distances[currentKey]))
+					if (!visited[i] && distances[i] < distances[currentKey])
 					{
 						currentKey = i;
 					}
@@ -207,7 +207,7 @@ namespace lcu
 					break;
 				}
 
-				pCurrentVertex = &(*VertexAt(currentKey));
+				pCurrentVertex = &*VertexAt(currentKey);
 				pCurrentSuccessor = pCurrentVertex->Successors();
 				while (pCurrentSuccessor)
 				{

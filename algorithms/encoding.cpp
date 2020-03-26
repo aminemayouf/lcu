@@ -20,7 +20,7 @@ namespace lcu
 						++i;
 					}
 				}
-				else if ((p_stringToDecode[i].IsNumeric() && p_stringToDecode[i + 1].IsNumeric())
+				else if (p_stringToDecode[i].IsNumeric() && p_stringToDecode[i + 1].IsNumeric()
 					|| i == p_stringToDecode.Length() - 1)
 				{
 					result += p_stringToDecode[i];
@@ -75,7 +75,7 @@ namespace lcu
 								result += flag;
 								result += p_stringToEncode[i];
 							}
-							if ((c % 9) != 0)
+							if (c % 9 != 0)
 							{
 								result += String::ValueOf(c % 9);
 								result += flag;
@@ -92,7 +92,7 @@ namespace lcu
 		String Encoding::RunLengthEncodingEncode(const String& p_stringToEncode, float& p_ratio)
 		{
 			String result = RunLengthEncodingEncode(p_stringToEncode);
-			p_ratio = 100 - ((static_cast<float>(result.Length()) * 100) / p_stringToEncode.Length());
+			p_ratio = 100 - static_cast<float>(result.Length()) * 100 / p_stringToEncode.Length();
 			return result;
 		}
 	}

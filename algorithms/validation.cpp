@@ -6,15 +6,15 @@ namespace lcu
 	{
 		bool Validation::IsAlpha(char p_primitiveChar)
 		{
-			return ((p_primitiveChar >= 65 && p_primitiveChar <= 90)
-				       || (p_primitiveChar >= 97 && p_primitiveChar <= 122))
+			return p_primitiveChar >= 65 && p_primitiveChar <= 90
+			       || p_primitiveChar >= 97 && p_primitiveChar <= 122
 				       ? true
 				       : false;
 		}
 
 		bool Validation::IsNumeric(char p_primitiveChar)
 		{
-			return (p_primitiveChar >= 48 && p_primitiveChar <= 57) ? true : false;
+			return p_primitiveChar >= 48 && p_primitiveChar <= 57 ? true : false;
 		}
 
 		bool Validation::IsAlphaNumeric(char p_primitiveChar)
@@ -48,12 +48,12 @@ namespace lcu
 
 		bool Validation::IsLowerCase(char p_primitiveChar)
 		{
-			return (p_primitiveChar >= 97 && p_primitiveChar <= 122) ? true : false;
+			return p_primitiveChar >= 97 && p_primitiveChar <= 122 ? true : false;
 		}
 
 		bool Validation::IsUpperCase(char p_primitiveChar)
 		{
-			return (p_primitiveChar >= 65 && p_primitiveChar <= 90) ? true : false;
+			return p_primitiveChar >= 65 && p_primitiveChar <= 90 ? true : false;
 		}
 	}
 }

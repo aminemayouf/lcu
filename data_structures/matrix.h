@@ -525,7 +525,7 @@ namespace lcu
 			{
 				result = Adjoint();
 				result.Transpose();
-				result *= (1 / determinant);
+				result *= 1 / determinant;
 			}
 			return result;
 		}

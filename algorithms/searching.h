@@ -30,7 +30,7 @@ namespace lcu
 			size_t startIndex = 0;
 			size_t middleIndex;
 			size_t endIndex = p_size;
-			while ((endIndex - startIndex) > 1)
+			while (endIndex - startIndex > 1)
 			{
 				middleIndex = (startIndex + endIndex) / 2;
 

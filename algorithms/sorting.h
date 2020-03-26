@@ -204,7 +204,7 @@ namespace lcu
 				{
 					memory = p_pArray[i];
 					j = i;
-					while ((j > (step - 1)) && (p_pArray[j - step] > memory))
+					while (j > step - 1 && (p_pArray[j - step] > memory))
 					{
 						p_pArray[j] = p_pArray[j - step];
 						j = j - step;
@@ -231,7 +231,7 @@ namespace lcu
 				{
 					memory = p_pArray[i];
 					j = i;
-					while ((j > (step - 1)) && (p_pArray[j - step] > memory))
+					while (j > step - 1 && (p_pArray[j - step] > memory))
 					{
 						p_pArray[j] = p_pArray[j - step];
 						j = j - step;

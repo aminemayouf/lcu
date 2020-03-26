@@ -417,7 +417,7 @@ namespace lcu
 
 		inline bool String::EndsWith(Char p_char) const
 		{
-			return (m_pCharT[m_length - 1] == p_char) ? true : false;
+			return m_pCharT[m_length - 1] == p_char ? true : false;
 		}
 
 		inline bool String::EndsWith(const char* const p_pPrimitiveCharT) const
@@ -753,7 +753,7 @@ namespace lcu
 			{
 				size_t k = 0;
 				size_t charOccurrences = Occurrences(p_charToReplace);
-				size_t charTLength = (p_replacementString.m_length * charOccurrences) + (m_length - charOccurrences);
+				size_t charTLength = p_replacementString.m_length * charOccurrences + (m_length - charOccurrences);
 				Char* pCharT = new Char[charTLength + 1];
 
 				for (size_t i = 0; i < m_length; ++i)
@@ -791,8 +791,8 @@ namespace lcu
 			size_t k = 0;
 			size_t l = 0;
 			size_t stringToReplaceOccurences = Occurrences(p_stringToReplace);
-			size_t charTLength = stringToReplaceOccurences + (m_length - (p_stringToReplace.m_length *
-				stringToReplaceOccurences));
+			size_t charTLength = stringToReplaceOccurences + (m_length - p_stringToReplace.m_length *
+				stringToReplaceOccurences);
 			Char* pCharT = new Char[charTLength + 1];
 
 			for (size_t i = 0; i <= m_length; ++i)
@@ -834,8 +834,8 @@ namespace lcu
 			size_t k = 0;
 			size_t l = 0;
 			size_t stringOccurrences = Occurrences(p_stringToReplace);
-			size_t charTLength = (stringOccurrences * p_replacementString.m_length) + (m_length - (p_stringToReplace.
-				m_length * stringOccurrences));
+			size_t charTLength = stringOccurrences * p_replacementString.m_length + (m_length - p_stringToReplace.
+				m_length * stringOccurrences);
 			Char* pCharT = new Char[charTLength + 1];
 
 			for (size_t i = 0; i <= m_length; ++i)
@@ -923,7 +923,7 @@ namespace lcu
 
 		inline bool String::StartsWith(Char p_char) const
 		{
-			return (m_pCharT[0] == p_char) ? true : false;
+			return m_pCharT[0] == p_char ? true : false;
 		}
 
 		inline bool String::StartsWith(const char* const p_pPrimitiveCharT) const
@@ -972,7 +972,7 @@ namespace lcu
 				return String();
 			}
 
-			String result((p_endIndex - p_startIndex) + 1);
+			String result(p_endIndex - p_startIndex + 1);
 			for (size_t i = p_startIndex; i <= p_endIndex; ++i)
 			{
 				result[i - p_startIndex] = m_pCharT[i];
